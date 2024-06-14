@@ -5,7 +5,5 @@
 ```bash
 php artisan make:factory PostFactory
 ```
-<p>
-    
-    Berfungsi untuk membuat data dummy dala project laravel
+<p>  Berfungsi untuk membuat data dummy dala project laravel
 </p>
