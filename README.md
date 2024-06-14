@@ -9,6 +9,8 @@ php artisan make:factory PostFactory
 </p>
 
 <h3>11. Eloquent Relationship</h3>
+<p>  Berfungsi untuk membuat relasi one to many
+</p>
 
 ```bash
 public function comments(): HasMany
@@ -16,6 +18,7 @@ public function comments(): HasMany
         return $this->hasMany(Comment::class);
     }
 ```
+
 <p>  Berfungsi untuk membuat relasi one to many
 </p>
 
@@ -25,6 +28,5 @@ public function comments(): HasMany
         return $this->belongsTo(User::class);
     }
 ```
-<p>  Berfungsi untuk membuat relasi one to many
-</p>
+
 
