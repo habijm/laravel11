@@ -18,6 +18,7 @@ public function comments(): HasMany
 ```
 <p>  Berfungsi untuk membuat relasi one to many
 </p>
+
 ```bash
  public function author(): BelongsTo
     {
