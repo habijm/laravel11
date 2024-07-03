@@ -13,6 +13,7 @@
                        <x-nav-link href="/about" :active="request()->is('about') ">About</x-nav-link>
                        <x-nav-link href="/posts" :active="request()->is('posts') ">Blog</x-nav-link>
                        <x-nav-link href="/camera" :active="request()->is('camera') ">Camera</x-nav-link>
+                       {{-- <x-nav-link href="/photos" :active="request()->is('photos') ">Gallery</x-nav-link> --}}
                        <x-nav-link href="/contact" :active="request()->is('contact') ">Contact</x-nav-link>
                        
                       

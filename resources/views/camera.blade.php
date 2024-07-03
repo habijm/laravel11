@@ -2,21 +2,26 @@
     <x-slot:title>{{ $title }} </x-slot:title>
     <h1>Halaman Camera</h1>
 
-
-    <div class="max-w-md mx-auto bg-white rounded-lg
-        shadow-md overflow-hidden">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
         <div class="p-6">
             <h1 class="text-xl font-bold mb-4 text-center">FOTO DENGAN GAYA</h1>
             <video id="video" class="w-full bg-black rounded" autoplay></video>
             <canvas id="canvas" class="hidden"></canvas>
-            <button id="startButton"
-                class="mt-4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded w-full">
-                Open Camera
-            </button>
-            <button id="captureButton"
-                class="mt-4 bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full">
-                Ambil Foto
-            </button>
+            <div class="flex gap-1">
+                <div class="flex-auto">
+                    <button id="startButton"
+                        class="mt-4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded w-full">
+                        <i class="fa-solid fa-camera"></i><span class="ml-2">Open Camera</span>
+                    </button>
+                </div>
+                <div class="flex-auto">
+                    <button id="captureButton"
+                        class="mt-4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded w-full">
+                        <i class="fa-solid fa-camera-retro"></i> <span class="ml-2">Ambil Gambar</span>
+                    </button>
+                </div>
+            </div>
+
             <form id="photoForm" method="POST" action="{{ route('photos.store') }}">
                 @csrf
                 <input type="hidden" name="photo" id="photoInput">
@@ -25,6 +30,10 @@
                     Save Photo
                 </button>
             </form>
+
+            <div class="mt-4">
+                <img id="capturedImage" class="w-full rounded" src="" alt="Hasil Gambar" />
+            </div>
         </div>
     </div>
     <div class="swal" data-swal="{{ session('success') }}"></div>
@@ -57,6 +66,7 @@
 
             const dataURL = canvas.toDataURL('image/png');
             document.getElementById('photoInput').value = dataURL;
+            document.getElementById('capturedImage').src = dataURL;
         });
 
         const swal = $('.swal').data('swal');
@@ -76,12 +86,4 @@
             });
         }
     </script>
-
-
-
-
-
-
-
-
 </x-layout>

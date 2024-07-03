@@ -20,7 +20,7 @@ return new class extends Migration
                 indexName: 'posts_author_id'
             );
             $table->foreignId('category_id')->constrained(
-                table: 'catagories',
+                table: 'categories',
                 indexName: 'posts_category_id'
             );
             $table->text('body');

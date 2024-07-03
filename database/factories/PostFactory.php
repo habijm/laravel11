@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PostFactory extends Factory
 {
+    
     /**
      * Define the model's default state.
      *
@@ -22,6 +24,7 @@ class PostFactory extends Factory
             'title' => fake()->sentence(),
             'slug' => Str::slug(fake()->sentence()),
             'author_id' => User::factory(),
+            'category_id' => Category::factory(),
             'body' => fake()->text(),
            
         ];
