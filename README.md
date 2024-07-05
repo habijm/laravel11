@@ -39,4 +39,56 @@ public function comments(): HasMany
 protected $with = ['author', 'category'];
 ```
 
+<h3>15. Fitur Search</h3>
+<p> Kode ini mendefinisikan sebuah method scopeFilter dalam model Post yang digunakan untuk menambahkan filter ke query berdasarkan pencarian, kategori, dan penulis. Method ini menggunakan teknik "query scope" di Laravel, yang memungkinkan Anda untuk merangkai kondisi query secara kondisional dalam cara yang bersih dan mudah dibaca.
+</p>
+
+<p>Model </p>
+
+```bash
+ public function scopeFilter(Builder $query, array $filters): void  
+    {
+
+        $query->when(
+            $filters['search'] ?? false,
+            fn ($query, $search) =>
+            $query->where('title', 'like', '%' . $search . '%')
+        );
+
+        $query->when(
+            $filters['category'] ?? false,
+            fn ($query, $category) =>
+            $query->whereHas('category', fn($query) => $query->where('slug', $category))
+        );
+
+        $query->when(
+            $filters['author'] ?? false,
+            fn ($query, $author) =>
+            $query->whereHas('author', fn($query) => $query->where('username', $author))
+        );
+    }
+```
+
+<p>Route</p>
+
+```bash
+  return view('posts',  ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()]);
+```
+
+<p>Halaman Search</p>
+
+```bash
+    @if(request('category'))
+        <input type="hidden" name="category" value="{{ request('category') }}">             
+    @endif
+```
+
+<p>Contoh Link</p>
+
+```bash
+   <a href="/posts?category={{ $post->category->slug }}">
+```
+
+ 
+
 
