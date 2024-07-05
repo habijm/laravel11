@@ -29,4 +29,13 @@ public function comments(): HasMany
     }
 ```
 
+<h3>14. N+1 Problem</h3>
+<p> Masalah N+1 pada Laravel terjadi ketika Anda mengakses relasi dalam loop tanpa melakukan eager loading. Hal ini menyebabkan banyak sekali query SQL yang tidak efisien. Misalnya, jika Anda memiliki daftar posts dan setiap post memiliki author, tanpa eager loading, Laravel akan 
+</p>
+
+<p>Tambahkan ini pada model </p>
+```bash
+protected $with = ['author', 'category'];
+```
+
 
