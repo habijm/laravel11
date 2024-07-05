@@ -34,6 +34,7 @@ public function comments(): HasMany
 </p>
 
 <p>Tambahkan ini pada model </p>
+
 ```bash
 protected $with = ['author', 'category'];
 ```
