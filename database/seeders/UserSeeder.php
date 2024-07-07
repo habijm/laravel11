@@ -8,6 +8,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use function Symfony\Component\String\b;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -20,7 +22,7 @@ class UserSeeder extends Seeder
             'username' => 'habijiyanm',
             'email' => 'habijiyanm@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('password'),
+            'password' => bcrypt('12345'),
             'remember_token' => Str::random(10),
         ]);
 

@@ -13,6 +13,7 @@
                        <x-nav-link href="/about" :active="request()->is('about') ">About</x-nav-link>
                        <x-nav-link href="/posts" :active="request()->is('posts') ">Blog</x-nav-link>
                        <x-nav-link href="/camera" :active="request()->is('camera') ">Camera</x-nav-link>
+                       <x-nav-link href="/surah" :active="request()->is('surah') ">Surah</x-nav-link>
                        {{-- <x-nav-link href="/photos" :active="request()->is('photos') ">Gallery</x-nav-link> --}}
                        <x-nav-link href="/contact" :active="request()->is('contact') ">Contact</x-nav-link>
                        
@@ -106,7 +107,10 @@
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <x-nav-link href="/" :active="request()->is('/') ">Home</x-nav-link>
             <x-nav-link href="/about" :active="request()->is('about') ">About</x-nav-link>
-            <x-nav-link href="/post" :active="request()->is('posts') ">Blog</x-nav-link>
+            <x-nav-link href="/posts" :active="request()->is('posts') ">Blog</x-nav-link>
+            <x-nav-link href="/camera" :active="request()->is('camera') ">Camera</x-nav-link>
+            <x-nav-link href="/surah" :active="request()->is('surah') ">Surah</x-nav-link>
+            {{-- <x-nav-link href="/photos" :active="request()->is('photos') ">Gallery</x-nav-link> --}}
             <x-nav-link href="/contact" :active="request()->is('contact') ">Contact</x-nav-link>
         </div>
         <div class="border-t border-gray-700 pb-3 pt-4">
@@ -132,6 +136,8 @@
                 </button>
             </div>
             <div class="mt-3 space-y-1 px-2">
+                <a href="/login"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Login</a>
                 <a href="#"
                     class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your
                     Profile</a>

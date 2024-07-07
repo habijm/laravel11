@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\SurahController;
 
 
 
@@ -16,6 +17,7 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about', ['title' => 'About']);
 });
+Route::get('/surah', [SurahController::class, 'getSurah']);
 
 Route::get('/posts', function () {
     return view('posts',  ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()]);
@@ -50,3 +52,12 @@ Route::get('/camera', function () {
 Route::get('/photos', [PhotoController::class, 'index'])->name('photos.index');
 Route::get('/photos/data', [PhotoController::class, 'getPhotos'])->name('photos.data');
 Route::post('/photos', [PhotoController::class, 'store'])->name('photos.store');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
