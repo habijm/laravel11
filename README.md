@@ -39,7 +39,7 @@ public function comments(): HasMany
 protected $with = ['author', 'category'];
 ```
 
-<h3>15. Fitur Search</h3>
+<h3>16. Fitur Search</h3>
 <p> Kode ini mendefinisikan sebuah method scopeFilter dalam model Post yang digunakan untuk menambahkan filter ke query berdasarkan pencarian, kategori, dan penulis. Method ini menggunakan teknik "query scope" di Laravel, yang memungkinkan Anda untuk merangkai kondisi query secara kondisional dalam cara yang bersih dan mudah dibaca.
 </p>
 
@@ -88,6 +88,35 @@ protected $with = ['author', 'category'];
 ```bash
    <a href="/posts?category={{ $post->category->slug }}">
 ```
+
+<h3>17. Pagination</h3>
+<p>Referensi: https://laravel.com/docs/11.x/pagination#main-content</p>
+
+<p>Edit file tailwind.config.js</p>
+
+```bash
+ content: [
+    './resources/**/*.blade.php',
+    './resources/**/*.js',
+    './resources/**/*.vue',
+    './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+],
+```
+
+<p>Tambahkan Nama Tabel + links pada halaman</p>
+
+```bash
+{{ $users->links() }}
+
+```
+
+<p>Tambahkan pada Route + jumlah data yang ingin ditampilkan</p>
+
+```bash
+->paginate(9)
+
+```
+
 
  
 
