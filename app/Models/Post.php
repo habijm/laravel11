@@ -29,19 +29,21 @@ class Post extends Model
     // Fungsi untuk search
     public function scopeFilter(Builder $query, array $filters): void  
     {
-
+        // Apply a conditional search filter
         $query->when(
             $filters['search'] ?? false,
             fn ($query, $search) =>
             $query->where('title', 'like', '%' . $search . '%')
         );
-
+    
+        // Apply a conditional category filter
         $query->when(
             $filters['category'] ?? false,
             fn ($query, $category) =>
             $query->whereHas('category', fn($query) => $query->where('slug', $category))
         );
-
+    
+        // Apply a conditional author filter
         $query->when(
             $filters['author'] ?? false,
             fn ($query, $author) =>

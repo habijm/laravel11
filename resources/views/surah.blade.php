@@ -25,13 +25,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $surah)
-                        <tr class=" border-b">
+                    @forelse ($data as $surah)
+                        <tr class="border-b">
                             <td class="px-6 py-4">
                                 {{ $surah['id'] }}
                             </td>
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $surah['doa'] }}
                             </th>
                             <td class="px-6 py-4">
@@ -44,7 +43,13 @@
                                 {{ $surah['artinya'] }}
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="5" class="px-6 py-4 text-center">
+                                Tidak ada data ditemukan.
+                            </td>
+                        </tr>
+                    @endforelse
 
                 </tbody>
             </table>

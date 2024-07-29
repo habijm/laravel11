@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SurahController;
 
 
@@ -22,6 +23,9 @@ Route::get('/surah', [SurahController::class, 'getSurah']);
 Route::get('/posts', function () {
     return view('posts',  ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(9)->withQueryString()]);
 });
+
+Route::get('/livewireblog', [PostController::class, 'index']);
+
 
 Route::get('/posts/{post:slug}', function (Post $post) {
 

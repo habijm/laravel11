@@ -14,6 +14,7 @@
                         <x-nav-link href="/posts" :active="request()->is('posts')">Blog</x-nav-link>
                         <x-nav-link href="/camera" :active="request()->is('camera')">Camera</x-nav-link>
                         <x-nav-link href="/surah" :active="request()->is('surah')">Surah</x-nav-link>
+                        <x-nav-link href="/livewireblog" :active="request()->is('livewireblog')">livewireblog</x-nav-link>
                         {{-- <x-nav-link href="/photos" :active="request()->is('photos') ">Gallery</x-nav-link> --}}
                         <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
 
